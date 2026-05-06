@@ -1,20 +1,20 @@
+// teste.js
 const axios = require("axios");
 
 const url = "http://localhost:3005";
 
-async function bruteForceSimples() {
-  let tentativas = 0;
-
-  while (tentativas < 1000) {
+async function teste() {
+  for (let i = 0; i < 20; i++) {
     try {
       const res = await axios.get(url);
-      console.log(`Tentativa ${tentativas}:`, res.data);
-    } catch (err) {
-      console.log(`Erro na tentativa ${tentativas}`);
-    }
 
-    tentativas++;
+      console.log(`Tentativa ${i}: ${res.status}`);
+    } catch (err) {
+      console.log(
+        `Tentativa ${i}: ${err.response.status} - ${err.response.data}`
+      );
+    }
   }
 }
 
-bruteForceSimples();
+teste();
